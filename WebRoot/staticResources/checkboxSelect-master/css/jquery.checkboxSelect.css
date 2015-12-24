@@ -1,0 +1,54 @@
+.checkbox-select-label{
+	padding: 0px 2px;
+	display: block;
+	white-space: nowrap;
+	float: left;
+	width:100%;
+	text-align: left;
+}
+.checkbox-select-content{
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: solid 1px #B2B2B2;
+	background: #FFF;
+}
+.checkbox-select-selector{
+	background: #FFF url(images/dropdown.blue.png) right center no-repeat;
+	border: solid 1px #BBB;
+	padding-right: 20px;
+	position: relative;
+	cursor: default;
+	text-decoration: none;
+	color: black;
+	vertical-align: top;
+	overflow:hidden;
+}
+.checkbox-select-active{
+	background: url(images/dropdown.blue.active.png) right center no-repeat;
+	text-decoration: none;
+	border: inset 1px #000;
+	padding-right: 20px;
+	position: relative;
+	cursor: default;
+	color: black;
+	vertical-align: top;
+	overflow:hidden;
+}
+.checkbox-select-input{
+	margin:0px;
+	padding:0px;
+	border:0px;
+
+}
+.checkbox-select-selectAll{
+	border-bottom: dotted 1px #CCC;
+	padding: 0px 2px;
+	display: block;
+	white-space: nowrap;
+	float: left;
+	width:100%;
+	text-align: left;
+}
+.checkbox-select-itemChecked{
+	background-color: #dce5f8;
+}

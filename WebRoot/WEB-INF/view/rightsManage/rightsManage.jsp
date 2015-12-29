@@ -33,7 +33,7 @@
 				<div class="ct">
 					<div class="block" style="width: 800px;">
 						<div class="search">
-							<input class="searchTxt" type="text" value="请输入ITCode…" id="itcodeSearch" name="itcodeSearch">
+							<input class="searchTxt" type="text" value="部门名称或ITCode" id="itcodeSearch" name="itcodeSearch">
 							<input  id="searchBtnId"	onclick="searchBtnIdQuery()"	type="button" class="searchBtn">
 						</div>
 						<div class="insert">
@@ -49,8 +49,8 @@
 								<tr>
 									<th style="width: 70px;"><input type="checkbox" name=""
 										id="" class="allOrNone">&nbsp;序号</th>
-									<th style="width: 100px;">一级部门编号</th>
-									<th style="width: 165px;">一级部门名称</th>
+									<th style="width: 100px;">部门编号</th>
+									<th style="width: 165px;">部门名称</th>
 									<th style="width: 265px;">考核管理员</th>
 									<th style="width: 80px;">查看</th>
 									<th style="width: 120px;">操作</th>
@@ -70,6 +70,16 @@
 								</div>
 							</div>
 						</div>
+						<div>
+							<a class="downloadModal" style="text-decoration:none;vertical-align:top;line-height: 28px;" href="${pageContext.request.contextPath}/upload1/downloadExcel">模版下载.xls</a>
+						</div>
+						<div>
+							<div class="upload" id="div-addInsuranceTemplate" style="overflow:hidden;overflow-x:hidden;border:1px solid #fff; display: inline-block;"></div> 
+							<span id="InsuranceTemplate"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="attach_span"></span>
+							<input type="button" class="ensureUpload" name="batchAddingButton" id='batchAddingButton' value="上传" onClick="batchAddingButton()" style="display: none;background-color: #f48148;color:#fff;font-weight:700;border-radius: 3px;border:0;padding: 3px 10px;width:70px;vertical-align: top;"/>
+							<p><span id="tips" style="color:red;"></span></p>
+						</div>
+						<div id="pType4"></div>
 					</div>
 				</div>
 			</div>
@@ -275,4 +285,8 @@
 
 	<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
 </body>
+<script
+	src="${pageContext.request.contextPath}/staticResources/js/rightsManage/swfobject.js"></script>
+<script
+	src="${pageContext.request.contextPath}/staticResources/js/rightsManage/upload.js"></script>
 </html>

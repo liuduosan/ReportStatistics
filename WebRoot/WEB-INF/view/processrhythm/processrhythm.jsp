@@ -46,7 +46,6 @@
 				</div>
 			</div>
 			<div class="titleContentBox rate">
-				<h2>所处环节比例</h2>
 				<div class="ct">
 					<div id="main1" style="width:900px;height:300px;border:0px solid #ccc;margin: 0 auto;padding-top: 50px;"></div>
 					<div id="main2" style="width:900px;height:300px;border:0px solid #ccc;margin: 0 auto;padding-top: 50px;"></div>

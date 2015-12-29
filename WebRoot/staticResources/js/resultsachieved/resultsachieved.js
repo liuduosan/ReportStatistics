@@ -1,16 +1,215 @@
 var flag = true;
 var rankSelect=null;
 var classSelect=null;
+var ids = [];
+var idsStr = "";
+var deptNames = [];
+var deptNames2 = [];
+var targetValues = [];
+var targetValues2 = [];
+var sum = 0;
+var sum2 = 0;
+function getTargetValue(targetId,f) {
+	$.ajax({
+		type : "post",
+		url : webContext + '/DeptStruc/getDeptStruc',
+		dataType : 'json',
+		async : false,
+		success : function(data, textStatus) {
+			if (data.success) {
+				var jsonData = jQuery.parseJSON(data.format);
+				$.fn.zTree.init($("#ztreeSidebar"), setting, jsonData);
+				var treeObj = $.fn.zTree.getZTreeObj("ztreeSidebar");
+
+				var idsString = data.checkedNodes;
+				var idsTemp = targetId.split(",");
+				for (var g = 0; g < idsTemp.length; g++) {
+					var id = idsTemp[g];
+					var node2 = treeObj.getNodeByParam("departNo2", id, null);
+
+					deptNames[g] = node2.deptname;
+					treeObj.showNode(node2);
+					treeObj.checkNode(node2, true, true);
+				}
+				var nodes = treeObj.getNodes();
+				var checkedNodes = treeObj.transformToArray(nodes);
+				for (var int = 0; int < checkedNodes.length; int++) {
+					var obj = checkedNodes[int];
+					if (obj.checked == false) {
+						treeObj.hideNodes(treeObj.transformTozTreeNodes(obj));
+					}
+				}
+
+				nodes = treeObj.getCheckedNodes(true);
+				v = "";
+				for (var i = 0; i < nodes.length; i++) {
+					if (nodes.length - 1 == i) {
+						v += "'" + nodes[i].departNo2 + "'";
+					} else {
+						v += "'" + nodes[i].departNo2 + "'" + ",";
+					}
+					//获取选中节点的值
+				}
+
+				//获取季度
+				var quarter = $("#quarter option:selected").val();
+				//获取月份
+				var month = $("#month option:selected").val();
+				//获取日期
+				var date = $("#date").val();
+				if (v == '') {
+					layer.alert('部门不能为空!', function(index) {
+						layer.close(index);
+					});
+					return false;
+				}
+				if (date == '') {
+					layer.alert('历史数据时点不能为空!', function(index) {
+						layer.close(index);
+					});
+					return false;
+				}
+				if(f){
+				//柱状图
+				$
+						.ajax({
+							type : "post",
+							url : webContext
+									+ '/TableName/getRankAnalysisPerformanceRangeBar',
+							dataType : 'json',
+							data : {
+								deptno : v,
+								quarter : quarter,
+								month : month,
+								time : date
+							},
+							async : false,
+							success : function(data, textStatus) {
+								if (data.success) {
+									//							var name = $.parseJSON(data.name);
+									var value = $.parseJSON(data.value);
+									var targetValuesSize = targetValues.length;
+									targetValues[targetValuesSize] = value;
+								}
+							}
+						});
+				}
+			} else {
+				alert(data.error);
+			}
+		},
+		error : function(xhr, ts, et) {
+		}
+	});
+
+}
+
+function getTargetValue2(targetId,f) {
+	$.ajax({
+		type : "post",
+		url : webContext + '/DeptStruc/getDeptStruc',
+		dataType : 'json',
+		async : false,
+		success : function(data, textStatus) {
+			if (data.success) {
+				var jsonData = jQuery.parseJSON(data.format);
+				$.fn.zTree.init($("#ztreeSidebar"), setting, jsonData);
+				var treeObj = $.fn.zTree.getZTreeObj("ztreeSidebar");
+
+				var idsString = data.checkedNodes;
+				var idsTemp = targetId.split(",");
+				for (var g = 0; g < idsTemp.length; g++) {
+					var id = idsTemp[g];
+					var node2 = treeObj.getNodeByParam("departNo2", id, null);
+
+					deptNames2[g] = node2.deptname;
+					treeObj.showNode(node2);
+					treeObj.checkNode(node2, true, true);
+				}
+				var nodes = treeObj.getNodes();
+				var checkedNodes = treeObj.transformToArray(nodes);
+				for (var int = 0; int < checkedNodes.length; int++) {
+					var obj = checkedNodes[int];
+					if (obj.checked == false) {
+						treeObj.hideNodes(treeObj.transformTozTreeNodes(obj));
+					}
+				}
+
+				nodes = treeObj.getCheckedNodes(true);
+				v = "";
+				for (var i = 0; i < nodes.length; i++) {
+					if (nodes.length - 1 == i) {
+						v += "'" + nodes[i].departNo2 + "'";
+					} else {
+						v += "'" + nodes[i].departNo2 + "'" + ",";
+					}
+					//获取选中节点的值
+				}
+
+				//获取季度
+				var quarter = $("#quarter option:selected").val();
+				//获取月份
+				var month = $("#month option:selected").val();
+				//获取日期
+				var date = $("#date").val();
+				if (v == '') {
+					layer.alert('部门不能为空!', function(index) {
+						layer.close(index);
+					});
+					return false;
+				}
+				if (date == '') {
+					layer.alert('历史数据时点不能为空!', function(index) {
+						layer.close(index);
+					});
+					return false;
+				}
+				if(f){
+				//柱状图
+				$
+						.ajax({
+							type : "post",
+							url : webContext
+									+ '/TableName/getRankAnalysisComprehensiveEvaluationBar',
+							dataType : 'json',
+							data : {
+								deptno : v,
+								quarter : quarter,
+								month : month,
+								time : date
+							},
+							async : false,
+							success : function(data, textStatus) {
+								if (data.success) {
+									//							var name = $.parseJSON(data.name);
+									var value = $.parseJSON(data.value);
+									var targetValuesSize = targetValues2.length;
+									targetValues2[targetValuesSize] = value;
+								}
+							}
+						});
+				}
+			} else {
+				alert(data.error);
+			}
+		},
+		error : function(xhr, ts, et) {
+		}
+	});
+
+}
 $(function(){
 	$(".sidebar").height($("#main .content").height());
 	//加载下拉列表插件
 	rankSelect=$("#rank").checkboxSelect({
 		showItem:true,
-		selectAll: true
+		selectAll: true,
+		height: 180
 	});
 	classSelect=$("#class").checkboxSelect({
 		showItem:true,
-		selectAll: true
+		selectAll: true,
+		height: 140
 	});
 	//加载权限对应的部门层级树
 	if(flag){
@@ -26,7 +225,8 @@ $(function(){
 					$.fn.zTree.init($("#ztreeSidebar"), setting, jsonData);
 					var treeObj = $.fn.zTree.getZTreeObj("ztreeSidebar");
 					var idsString = data.checkedNodes;
-					var ids = idsString.split(",");
+					idsStr = idsString;
+					ids = idsString.split(",");
 					for (var g = 0; g <ids.length; g++) {
 						var id = ids[g];
 						var node2= treeObj.getNodeByParam("departNo2", id, null);
@@ -103,8 +303,18 @@ data : {
 
 //根据条件查询流程节奏报表
 function query(){
-	var treeObj=$.fn.zTree.getZTreeObj("ztreeSidebar"),
-    nodes=treeObj.getCheckedNodes(true),
+	var titleStr = "";
+	var titleStr2 = "";
+	for (var int = 0; int < ids.length; int++) {
+
+		getTargetValue(ids[int],true);
+		getTargetValue2(ids[int],true);
+		
+	}
+	var treeObj=$.fn.zTree.getZTreeObj("ztreeSidebar");
+	getTargetValue(idsStr,false);
+	getTargetValue2(idsStr,false);
+    nodes=treeObj.getCheckedNodes(true);
     v="";
     for(var i=0;i<nodes.length;i++){
     	if(nodes.length-1==i){
@@ -173,69 +383,116 @@ function query(){
 				var name = $.parseJSON(data.name);
 				var value = $.parseJSON(data.value);
 				var myChart1 = echarts.init(document.getElementById('main1'));
-				myChart1.setOption({
-					 title : {
-					        text: '统计业绩区间比例',
-					        subtext: '绩效考核系统'
-					    },
-					    grid:{
-							x:180,
-							y:60
+				var option1 = {
+						title : {
+							text : '统计业绩区间比例',
+							x : 'center'
 						},
-					    tooltip : {
-					        trigger: 'axis'
-					    },
-					    legend: {
-					    	data : []
-					    },
-					    toolbox: {
-					        show : true,
-					        x:'right',
-					        y:'top',
-					        feature : {
-					            mark : {show: true},
-					            dataView : {show: true, readOnly: false},
-					            magicType: {show: false},
-					            restore : {show: true},
-					            saveAsImage : {show: true}
+					tooltip : {
+						trigger : 'axis',
+						axisPointer : { // 坐标轴指示器，坐标轴触发有效
+							type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					legend : {
+						data : deptNames
+					},
+					toolbox : {
+						show : true,
+//						feature : {
+//							mark : {
+//								show : true
+//							},
+//							dataView : {
+//								show : true,
+//								readOnly : false
+//							},
+//							magicType : {
+//								show : true,
+//								type : [ 'line', 'bar', 'stack', 'tiled' ]
+//							},
+//							restore : {
+//								show : true
+//							},
+//							saveAsImage : {
+//								show : true
+//							}
+//						}
+					},
+					calculable : true,
+					xAxis : [ {
+						type : 'value',
+//						boundaryGap : [ 0, 0.01 ],
+//						axisLabel : {
+//							margin : 16
+//						}
+					} ],
+					yAxis : [ {
+						type : 'category',
+						data : name
+					//['周一','周二','周三','周四','周五','周六','周日']
+					} ],
+					series : [
+
+					/*{
+					    name:'神州数码控股',
+					    type:'bar',
+					    stack: '总量',
+					    itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+					    data:value
+					},
+					{
+					    name:'神州数码集团',
+					    type:'bar',
+					    stack: '总量',
+					    itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+					    data:value
+					}*/
+					]
+				};
+
+				var seriesData = [];
+				for (var int = 0; int < deptNames.length; int++) {
+					var obj = {};
+					obj.name = "'" + deptNames[int] + "'";
+					obj.type = 'bar';
+					obj.stack = '总量';
+					obj.itemStyle = {
+						normal : {
+							label : {
+								show : true,
+								position : 'insideRight'
+							}
+						}
+					};
+					obj.data = targetValues[int];
+					/*obj.itemStyle= {
+					        normal: {
+					        	color: function(params) {
+					                var colorList = ['#4fc4f6','#4b5cc4','#99072b','#3b2e7e','#be002f','#8d4bbb','#e62545','#1685a9','#e64c65','#c392cb'];
+					                return colorList[params.dataIndex]
+					            },
+					            label: {
+					                show: true,
+					                position: 'right',
+					                formatter: '{c}'
+					            }
 					        }
-					    },
-					    calculable : true,
-					    xAxis : [
-					        {
-					            type : 'value',
-					            boundaryGap : [0, 0.01]
-					        }
-					    ],
-					    yAxis : [
-					        {
-					            type : 'category',
-					            data : name
-					        }
-					    ],
-					    series : [
-					        {
-					            type:'bar',
-					            data:value,
-					            itemStyle: {
-					                normal: {
-					                	color: function(params) {
-					                        // build a color map as your need.
-					                        var colorList = ['#4fc4f6','#4b5cc4','#99072b','#3b2e7e','#be002f','#8d4bbb','#e62545','#1685a9','#e64c65','#c392cb'];
-					                        return colorList[params.dataIndex];
-					                    },
-					                    label: {
-					                        show: true,
-					                        position: 'right',
-					                        formatter: '{c}'
-					                        
-					                    }
-					                }
-								 }
-					        }
-					    ]
-				});
-			
+						 };*/
+					seriesData[int] = obj;
+				}
+				option1.series = seriesData;
+				// 计算总数targetValues -  sum
+				for (var int2 = 0; int2 < targetValues.length; int2++) {
+					for (var int = 0; int < targetValues[int2].length; int++) {
+						sum += parseInt(targetValues[int2][int]);
+					}
+				}
+				option1.title.text += "(";
+				option1.title.text += sum;
+				option1.title.text += ")";
+				titleStr = option1.title.text;
+				myChart1.setOption(option1);
 				
 			} else {
 				alert(data.error);
@@ -258,8 +515,7 @@ function query(){
 				var myChart2 = echarts.init(document.getElementById('main2'));
 				myChart2.setOption({
 					title : {
-						text : '统计业绩区间比例',
-						subtext : '绩效考核系统',
+						text : titleStr,
 						x : 'center'
 					},
 					tooltip : {
@@ -341,67 +597,77 @@ function query(){
 				var name = $.parseJSON(data.name);
 				var value = $.parseJSON(data.value);
 				var myChart3 = echarts.init(document.getElementById('main3'));
-				myChart3.setOption({
-					 title : {
-					        text: '统计综合考评比例',
-					        subtext: '绩效考核系统'
-					    },
-					    grid:{
-							x:180,
-							y:60
+				var option3 = {
+						title : {
+							text : '统计综合考评比例',
+							x : 'center'
 						},
-					    tooltip : {
-					        trigger: 'axis'
-					    },
-					    legend: {
-					    	data : []
-					    },
-					    toolbox: {
-					        show : true,
-					        x:'right',
-					        y:'top',
-					        feature : {
-					            mark : {show: true},
-					            dataView : {show: true, readOnly: false},
-					            magicType: {show: false},
-					            restore : {show: true},
-					            saveAsImage : {show: true}
+					tooltip : {
+						trigger : 'axis',
+						axisPointer : { // 坐标轴指示器，坐标轴触发有效
+							type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					legend : {
+						data : deptNames2
+					},
+					toolbox : {
+						show : true,
+					},
+					calculable : true,
+					xAxis : [ {
+						type : 'value',
+					} ],
+					yAxis : [ {
+						type : 'category',
+						data : name
+					} ],
+					series : [
+					]
+				};
+
+				var seriesData = [];
+				for (var int = 0; int < deptNames2.length; int++) {
+					var obj = {};
+					obj.name = "'" + deptNames2[int] + "'";
+					obj.type = 'bar';
+					obj.stack = '总量';
+					obj.itemStyle = {
+						normal : {
+							label : {
+								show : true,
+								position : 'insideRight'
+							}
+						}
+					};
+					obj.data = targetValues2[int];
+					/*obj.itemStyle= {
+					        normal: {
+					        	color: function(params) {
+					                var colorList = ['#4fc4f6','#4b5cc4','#99072b','#3b2e7e','#be002f','#8d4bbb','#e62545','#1685a9','#e64c65','#c392cb'];
+					                return colorList[params.dataIndex]
+					            },
+					            label: {
+					                show: true,
+					                position: 'right',
+					                formatter: '{c}'
+					            }
 					        }
-					    },
-					    calculable : true,
-					    xAxis : [
-					        {
-					            type : 'value',
-					            boundaryGap : [0, 0.01]
-					        }
-					    ],
-					    yAxis : [
-					        {
-					            type : 'category',
-					            data : name
-					        }
-					    ],
-					    series : [
-					        {
-					            type:'bar',
-					            data:value,
-					            itemStyle: {
-					                normal: {
-					                	color: function(params) {
-					                        // build a color map as your need.
-					                        var colorList = ['#4fc4f6','#4b5cc4','#99072b','#3b2e7e','#be002f','#8d4bbb','#e62545','#1685a9','#e64c65','#c392cb'];
-					                        return colorList[params.dataIndex]
-					                    },
-					                    label: {
-					                        show: true,
-					                        position: 'right',
-					                        formatter: '{c}'
-					                    }
-					                }
-								 }
-					        }
-					    ]
-				});
+						 };*/
+					seriesData[int] = obj;
+				}
+				option3.series = seriesData;
+				// 计算总数targetValues -  sum
+				for (var int2 = 0; int2 < targetValues2.length; int2++) {
+					for (var int = 0; int < targetValues2[int2].length; int++) {
+						sum2 += parseInt(targetValues2[int2][int]);
+					}
+				}
+				option3.title.text += "(";
+				option3.title.text += sum2;
+				option3.title.text += ")";
+				titleStr2 = option3.title.text;
+				myChart3.setOption(option3);
 			
 				
 			} else {
@@ -424,8 +690,7 @@ function query(){
 				var myChart4 = echarts.init(document.getElementById('main4'));
 				myChart4.setOption({
 					title : {
-						text : '统计综合考评比例',
-						subtext : '绩效考核系统',
+						text : titleStr2,
 						x : 'center'
 					},
 					tooltip : {

@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class ValidateUserController {
 	private ValidateUserService validateUserService;
 	@RequestMapping(value="/login")
 	public ModelAndView validateUser(HttpServletRequest request,HttpServletResponse response){
-		String itcode = request.getHeader("iv-user");
+		String itcode = "liutaoq";
 		ModelAndView mav = new ModelAndView();
 		if(itcode==null || itcode.equals("")){
 			try {
@@ -40,9 +40,11 @@ public class ValidateUserController {
 			}else{
 				//判断是否是系统管理员
 				List<Map<java.lang.String, Object>>  adminlist =validateUserService.getItcodeAdministrators(itcode);
-				HttpSession session = request.getSession();
-				session.setAttribute("adminlist", adminlist.size());
-				System.out.println("------adminlist---------"+adminlist.size());
+				String admin=adminlist.size()+"";
+				Cookie cookie = new Cookie("admin", admin );
+				cookie.setMaxAge(-1);
+				cookie.setPath("/");
+				response.addCookie(cookie);
 				mav.setViewName("/processrhythm/processrhythm");
 				System.out.println("登陆成功");
 			}

@@ -1,5 +1,5 @@
 var culPage = "1";
-var ROWS_ONE_PAGE ="5";
+var ROWS_ONE_PAGE ="10";
 var $totalPage = 1;
 var $searchTotalPage = 1;
 var fengyeFlag = false;
@@ -8,24 +8,24 @@ var fengyeFlag = false;
 $(function(){
 	
 	var culPage = "1";
-	var ROWS_ONE_PAGE ="5";
+	var ROWS_ONE_PAGE ="10";
 
 		function createAfterStr(cul,total){
 			var afterStr = "";
 			if(total<5){
 				for (var int2 = 0; int2 < total; int2++) {
 					if(cul==(int2+1)){
-						afterStr+="<span class='current' id='pagenum"+cul+"' onclick='fengye(\"1\",\"5\",\"\")'>"+cul+"</span>";
+						afterStr+="<span class='current' id='pagenum"+cul+"' onclick='fengye(\"1\",\"10\",\"\")'>"+cul+"</span>";
 					}else{
-						afterStr+="<a href=\"javascript:void(0)\" id=\"pagenum"+(int2+1)+"\"  onclick=\"fengye('"+(int2+1)+"','5','')\">"+(int2+1)+"</a>";
+						afterStr+="<a href=\"javascript:void(0)\" id=\"pagenum"+(int2+1)+"\"  onclick=\"fengye('"+(int2+1)+"','10','')\">"+(int2+1)+"</a>";
 					}
 				}
 			}else{
-				for (var int2 = 0; int2 < 5; int2++) {
+				for (var int2 = 0; int2 < ROWS_ONE_PAGE; int2++) {
 					if(cul==(int2+1)){
-						afterStr+="<span class='current' id='pagenum"+cul+"' onclick='fengye(\"1\",\"5\",\"\")'>"+cul+"</span>";
+						afterStr+="<span class='current' id='pagenum"+cul+"' onclick='fengye(\"1\",\"10\",\"\")'>"+cul+"</span>";
 					}else{
-						afterStr+="<a href=\"javascript:void(0)\" id=\"pagenum"+(int2+1)+"\"  onclick=\"fengye('"+(int2+1)+"','5','')\">"+(int2+1)+"</a>";
+						afterStr+="<a href=\"javascript:void(0)\" id=\"pagenum"+(int2+1)+"\"  onclick=\"fengye('"+(int2+1)+"','10','')\">"+(int2+1)+"</a>";
 					}
 				}
 			}
@@ -37,7 +37,7 @@ $(function(){
 		var pageNum =p;
 		var rowsNum=r;
 		var itcode = i;
-		if(i=="请输入ITCode…"){
+		if(i=="部门名称或ITCode"){
 			itcode="";
 		}
 		
@@ -90,7 +90,7 @@ $(function(){
 		$("#lastPageId").addClass("current prev btnPress");
 	}
 	var itcodeSearchValue = $("#itcodeSearch").val();
-	if(itcodeSearchValue=="请输入ITCode…"){
+	if(itcodeSearchValue=="部门名称或ITCode"){
 		itcodeSearchValue="";
 		fengye("1",ROWS_ONE_PAGE,"");
 	}else{
@@ -702,7 +702,7 @@ function nextPage(){
 	if(parseInt(culPage)>=1){
 		$("#lastPageId").css("color","#000000");
 	}
-	if($("#itcodeSearch").val()=="请输入ITCode…" ||  $("#itcodeSearch").val()==""){
+	if($("#itcodeSearch").val()=="部门名称或ITCode" ||  $("#itcodeSearch").val()==""){
 		if(parseInt(culPage)<$totalPage){
 			fengye(parseInt(culPage)+1,ROWS_ONE_PAGE,$("#itcodeSearch").val());
 		}else{
@@ -728,7 +728,7 @@ function createAfterStr(cul,total){
 			if(cul==(int2+1)){
 				afterStr+="<span class='current'>"+cul+"</span>";
 			}else{
-				afterStr+="<a href=\"javascript:void(0)\"  onclick=\"fengye('"+(int2+1)+"','5','')\">"+(int2+1)+"</a>";
+				afterStr+="<a href=\"javascript:void(0)\"  onclick=\"fengye('"+(int2+1)+"','10','')\">"+(int2+1)+"</a>";
 			}
 		}
 	}else{
@@ -757,7 +757,7 @@ function fengye(p,r,i){
 	var pageNum =p;
 	var rowsNum=r;
 	var itcode = i;
-	if(i=="请输入ITCode…"){
+	if(i=="部门名称或ITCode"){
 		itcode="";
 	}
 	$.ajax({
@@ -815,7 +815,7 @@ function fengye(p,r,i){
 					}
 				}
 			}{
-				if(i=="请输入ITCode…" ||  i==""){
+				if(i=="部门名称或ITCode" ||  i==""){
 					for (var int = 0; int < $totalPage; int++) {
 						$("#pagenum"+parseInt(int+1)).css("display","");
 					}
@@ -831,7 +831,7 @@ function fengye(p,r,i){
 				}
 				
 				
-//				if(i=="请输入ITCode…" ||  i==""){
+//				if(i=="部门名称或ITCode" ||  i==""){
 //					fengyeFlag = true;
 //				}else{
 //					fengyeFlag = false;
@@ -1017,7 +1017,7 @@ function fengye(p,r,i){
 		  
 		  function searchBtnIdQuery(){
 			  var key = $("#itcodeSearch").val();
-			  if(key=="请输入ITCode…"){
+			  if(key=="部门名称或ITCode"){
 				  key="";
 			  }
 			  //查询总页数
@@ -1027,17 +1027,17 @@ function fengye(p,r,i){
 					dataType : 'json',
 					data:{
 						page:"1",
-						rows:"5",
+						rows:"10",
 						itcode:key
 							},
 					async:false,
 					success : function(data, textStatus) {
-						if(key=="请输入ITCode…" || key==""){
+						if(key=="部门名称或ITCode" || key==""){
 							$searchTotalPage = data.total;
 						}else{
 							$searchTotalPage = parseInt(data.total);
 						}
 					}
 				});
-			  fengye("1","5",key);
+			  fengye("1","10",key);
 		  }

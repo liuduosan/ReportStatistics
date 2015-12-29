@@ -38,7 +38,12 @@ public class UserService {
 	public List<UserManage> queryByUserNoOrITCode(String userNo,String itcode,int currentPage, int numPerPage){
 		
 		List<UserManage> returnList = new ArrayList<UserManage>();
-		List<Map<String,Object>> list =  userDao.queryByUserNoOrITCode(userNo, itcode,currentPage,numPerPage);
+		List<Map<String,Object>> list   = new ArrayList<Map<String,Object>>();
+		if(isChinese(itcode)){
+			list = userDao.queryByDeptName(userNo, itcode,currentPage,numPerPage);
+		}else{
+			list = userDao.queryByUserNoOrITCode(userNo, itcode,currentPage,numPerPage);
+		}
 		for (Map<String, Object> map : list) {
 			UserManage u = new UserManage();
 			u.setId(Null(map.get("id")));
@@ -68,8 +73,13 @@ public class UserService {
 	}
 	
 	public int countByUserNoOrITCode(String UserName,String itcode){
-		return userDao.countByUserNoOrITCode(UserName, itcode);
+		if(isChinese(itcode)){
+			return userDao.countByDeptName(UserName, itcode);
+		}else{
+			return userDao.countByUserNoOrITCode(UserName, itcode);
+		}
 	}
+	
 
 /**
  * null字符串处理
@@ -102,4 +112,31 @@ public void update(String itcode, String checkedNodes,String author,String descr
 public List<String> findNodesByITCode(String itcode){
 	return userDao.findNodesByITCode(itcode);
 }
+
+//根据Unicode编码完美的判断中文汉字和符号
+		private static boolean isChinese(char c) {
+			Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
+			if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+					|| ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+					|| ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+					|| ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+					|| ub == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+					|| ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS
+					|| ub == Character.UnicodeBlock.GENERAL_PUNCTUATION) {
+				return true;
+			}
+			return false;
+		}
+
+		// 完整的判断中文汉字和符号
+		public static boolean isChinese(String strName) {
+			char[] ch = strName.toCharArray();
+			for (int i = 0; i < ch.length; i++) {
+				char c = ch[i];
+				if (isChinese(c)) {
+					return true;
+				}
+			}
+			return false;
+		}
 }

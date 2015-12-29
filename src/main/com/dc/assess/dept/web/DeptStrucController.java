@@ -43,7 +43,7 @@ public class DeptStrucController {
 	public AjaxResult getDeptStruc(HttpServletRequest request){
 		List<DeptStrucDto> list = (List<DeptStrucDto>) request.getSession().getServletContext().getAttribute("data");
 		//获取用户itcode，根据itcode查询用户权限
-		String itcode = request.getHeader("iv-user");
+		String itcode = "liutaoq";
 		String checkedNodes=validateUserService.getItcode(itcode);
 		AjaxResult result=new AjaxResult();
 		if(list == null||list.size() == 0){

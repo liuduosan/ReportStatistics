@@ -363,7 +363,10 @@ select {
   height: 16px;
 }
 #main .content .titleContentBox.queryCondition .ct .insert .btnInsert,
-#main .content .titleContentBox.queryCondition .ct .insert .multiDel {
+#main .content .titleContentBox.queryCondition .ct .insert .multiDel,
+#main .content .titleContentBox.queryCondition .ct .insert .downloadModal,
+#main .content .titleContentBox.queryCondition .ct .insert .ensureUpload,
+#main .content .titleContentBox.queryCondition .ct .insert .upload {
   margin-left: 10px;
   width: 54px;
   height: 16px;
@@ -373,6 +376,9 @@ select {
   border: none;
   padding: 0;
   background: transparent;
+}
+#main .content .titleContentBox.queryCondition .ct .insert .upload{
+	width: 30px;
 }
 #main .content .titleContentBox.queryCondition .ct .insert .multiDel{
 	width: 72px;
@@ -784,3 +790,9 @@ select {
   background: url("../images/icon/012.png") no-repeat;
 }
 /*tip end*/
+
+#div-addInsuranceTemplate{
+	display: inline;
+	zoom:1;
+	vertical-align: middle;
+}

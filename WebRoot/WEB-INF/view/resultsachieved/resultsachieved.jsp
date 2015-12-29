@@ -50,9 +50,17 @@
 						<div class="class fl">
 							<span>按职级分析：</span>
 							<select id="rank">
-								<c:forEach items="${RankDtolist }" var="r">
-									<option value="${r.gwjbmc }">${r.gwjbmc }</option>
-								</c:forEach>
+<%-- 								<c:forEach items="${RankDtolist }" var="r"> --%>
+<%-- 									<option value="${r.gwjbmc }">${r.gwjbmc }</option> --%>
+<%-- 								</c:forEach> --%>
+									<option value="6级">6级</option>
+									<option value="5级">5级</option>
+									<option value="4级">4级</option>
+									<option value="3级">3级</option>
+									<option value="2级">2级</option>
+									<option value="60级">60级</option>
+									<option value="50级">50级</option>
+									<option value="20级">20级</option>
 							</select>
 						</div>
 						<div class="job fl">
@@ -67,7 +75,6 @@
 				</div>
 			</div>
 			<div class="titleContentBox rate">
-				<h2>所处环节比例</h2>
 				<div class="ct">
 					<div id="main1" style="width:900px;height:300px;border:0px solid #ccc;margin: 0 auto;padding-top: 50px;"></div>
 					<div id="main2" style="width:900px;height:300px;border:0px solid #ccc;margin: 0 auto;padding-top: 50px;"></div>

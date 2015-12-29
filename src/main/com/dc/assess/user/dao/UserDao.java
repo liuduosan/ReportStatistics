@@ -46,6 +46,27 @@ public class UserDao extends DataDao<Object> {
 		return pageInfo.getResultList();
 		
 	}
+	public List<Map<String,Object>> queryByDeptName(String UserName, String itcode,int currentPage, int numPerPage) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select  id,DC_UserInfo_Rights.itcode,checkedNodes,userno,UserName,"
+				+ "Gender,IDCard,DC_UserInfo.FlatName,DC_UserInfo.FlatCode,DC_UserInfo.CompanyCode,CompanyName,DeptNO,DeptStruc.DeptName,"
+				+ "TitleCode,TitleName,PostCode,Post,CostCenter,CostCenterName,author,description"
+				+ "  from DC_UserInfo_Rights join DC_UserInfo on  DC_UserInfo_Rights.itcode=DC_UserInfo.itcode  "
+				+ "join DeptStruc on  DC_UserInfo_Rights.checkedNodes=DeptStruc.DepartNo2 "
+				+ "where 1=1  ");
+		
+		if(itcode!=null && !itcode.equals("")){
+			sql.append(" and  DeptStruc.deptName like '%" + itcode
+				+ "%'");
+		}
+		if(UserName!=null && !UserName.equals("")){
+			sql.append(" and DC_UserInfo.UserName like '%" + UserName + "%'");
+		}
+		
+		Pagination pageInfo = new Pagination(sql.toString(), currentPage, numPerPage, getJdbcTemplate());
+		return pageInfo.getResultList();
+		
+	}
 	
 	public List<Map<String,Object>> queryByUserNameOrITCode(String UserName, String itcode) {
 		StringBuffer sql = new StringBuffer();
@@ -85,7 +106,21 @@ public class UserDao extends DataDao<Object> {
 		}
 		return getJdbcTemplate().queryForInt(sql.toString());
 	}
-
+	public int countByDeptName(String UserName, String deptName) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select    count(*)"
+				+ "  from DC_UserInfo_Rights join DC_UserInfo on  DC_UserInfo_Rights.itcode=DC_UserInfo.itcode  join "
+				+ "DeptStruc on  DC_UserInfo_Rights.checkedNodes=DeptStruc.DepartNo2 "
+				+ "where 1=1  ");
+		
+		if(deptName!=null && !deptName.equals("")){
+			sql.append(" and  DeptStruc.deptname like '%" + deptName
+				+ "%'");
+		}else{
+			sql.append(" and DC_UserInfo.UserName like '%" + UserName + "%'");
+		}
+		return getJdbcTemplate().queryForInt(sql.toString());
+	}
 	/**
 	 * null字符串处理
 	 * @param obj

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -251,7 +252,8 @@ public class ExcelUtils {
 	            			if (row.getCell(k).getCellType() == 1) {
 	            				hashMap.put(cellkey[k], row.getCell(k).getRichStringCellValue().toString());
 	            			} else {
-	            				hashMap.put(cellkey[k], row.getCell(k).getNumericCellValue());
+	            				DecimalFormat df = new DecimalFormat("0");  
+	            				hashMap.put(cellkey[k], df.format(row.getCell(k).getNumericCellValue()));
 	            			}
 	            			
 	            	}

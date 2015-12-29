@@ -73,7 +73,7 @@
 			$(target).after($div);
 			var contentDiv=$("<div class='checkbox-select-content'></div>").css({
 				"position":"absolute",
-				"height":"100px",
+				"height":options.height,
 				"width":options.width+20,
 				"z-index":1000,
 				"top":$div.height(),

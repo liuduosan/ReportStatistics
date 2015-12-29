@@ -1,0 +1,786 @@
+/*css reset*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+:focus {
+  outline: 1;
+}
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+nav ul,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+}
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+del {
+  text-decoration: line-through;
+}
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+input,
+select {
+  vertical-align: middle;
+}
+/*css reset end*/
+/*page style*/
+/*header*/
+#header {
+  min-width: 1166px;
+  width: auto !important;
+  width: 1166px;
+  height: 100px;
+  font-family: "Microsoft YaHei";
+}
+#header .title {
+  float: left;
+  width: 316px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  color: #fff;
+  text-indent: 50px;
+  background-color: #404d5e;
+}
+#header .nav {
+  margin-left: 316px;
+  background-color: #354052;
+  overflow: hidden;
+  min-width: 850px;
+  width: auto !important;
+  width: 850px;
+}
+#header .nav ul {
+  margin-left: 40px;
+}
+#header .nav ul li {
+  float: left;
+  margin-right: 40px;
+  height: 100px;
+}
+#header .nav ul li a {
+  line-height: 100px;
+  font-size: 16px;
+  color: #fff;
+}
+#header .nav ul li.flowstep {
+  text-indent: 38px;
+  background: url("../images/icon/001.png") no-repeat left center;
+}
+#header .nav ul li.flowstep.active,
+#header .nav ul li.flowstep:hover {
+  background: url("../images/icon/002.png") no-repeat left center;
+}
+#header .nav ul li.flowstep.active a,
+#header .nav ul li.flowstep:hover a {
+  color: #4fc4f6;
+}
+#header .nav ul li.achievement {
+  text-indent: 34px;
+  background: url("../images/icon/003.png") no-repeat left center;
+}
+#header .nav ul li.achievement.active,
+#header .nav ul li.achievement:hover {
+  background: url("../images/icon/004.png") no-repeat left center;
+}
+#header .nav ul li.achievement.active a,
+#header .nav ul li.achievement:hover a {
+  color: #4fc4f6;
+}
+#header .nav ul li.authority {
+  text-indent: 34px;
+  background: url("../images/icon/005.png") no-repeat left center;
+}
+#header .nav ul li.authority.active,
+#header .nav ul li.authority:hover {
+  background: url("../images/icon/006.png") no-repeat left center;
+}
+#header .nav ul li.authority.active a,
+#header .nav ul li.authority:hover a {
+  color: #4fc4f6;
+}
+#header .nav ul li.export {
+  text-indent: 34px;
+  background: url("../images/icon/007.png") no-repeat left center;
+}
+#header .nav ul li.export.active,
+#header .nav ul li.export:hover {
+  background: url("../images/icon/008.png") no-repeat left center;
+}
+#header .nav ul li.export.active a,
+#header .nav ul li.export:hover a {
+  color: #4fc4f6;
+}
+/*header end*/
+/*main*/
+#main {
+  min-width: 1166px;
+  width: auto !important;
+  width: 1166px;
+  overflow: hidden;
+  font-family: "Microsoft YaHei";
+}
+#main .sidebar {
+  float: left;
+  width: 316px;
+  background-color: #354052;
+}
+#main .sidebar .title {
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  font-size: 16px;
+  text-indent: 50px;
+  background-color: #354052;
+}
+#main .sidebar .title:hover{
+  background-color: #406484;
+}
+#main .sidebar .ztree {
+	width: 261px;
+	max-height: 520px;
+	height: auto !important;
+	height: 620px;
+	overflow:auto;
+  padding-left: 50px;
+  background: #2f374a;
+}
+#main .content {
+  min-width: 850px;
+  width: auto !important;
+  width: 850px;
+ /*  min-height: 600px;
+  height: auto !important; */
+  overflow: hidden;
+  margin-left: 316px;
+  min-height: 705px;
+  height: auto !important;
+  height: 705px;
+  background-color: #e9f0fa;
+}
+#main .content .titleContentBox {
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 810px;
+  width: auto !important;
+  width: 810px;
+  /*overflow: hidden;*/
+}
+#main .content .titleContentBox h2 {
+  height: 35px;
+  line-height: 35px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  text-indent: 20px;
+  font-size: 14px;
+  background-color: #f3f6fb;
+}
+#main .content .titleContentBox .ct {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #fff;
+}
+#main .content .titleContentBox .ct .fl {
+  float: left;
+}
+#main .content .titleContentBox.queryCondition {
+  margin-top: 16px;
+}
+#main .content .titleContentBox.queryCondition .ct {
+  min-width: 790px;
+  width: auto !important;
+  width: 790px;
+  min-height: 45px;
+  height: auto !important;
+  height: 45px;
+  /*overflow: hidden;*/
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#main .content .titleContentBox.queryCondition .ct .search {
+  float: left;
+  width: 156px;
+  height: 26px;
+  padding-bottom: 10px;
+  background: url("../images/search.png") no-repeat;
+  overflow: hidden;
+}
+#main .content .titleContentBox.queryCondition .ct .search .searchTxt {
+  float: left;
+  width: 129px;
+  height: 24px;
+  line-height: 26px;
+  text-indent: 5px;
+  border: none;
+  background: transparent;
+  color: #a1a1a1;
+}
+#main .content .titleContentBox.queryCondition .ct .search .searchBtn {
+  float: right;
+  width: 25px;
+  height: 24px;
+  border: none;
+  background: transparent;
+}
+#main .content .titleContentBox.queryCondition .ct .insert {
+  float: right;
+  margin-top: 14px;
+  height: 16px;
+}
+#main .content .titleContentBox.queryCondition .ct .insert .btnInsert,
+#main .content .titleContentBox.queryCondition .ct .insert .multiDel {
+  margin-left: 10px;
+  width: 54px;
+  height: 16px;
+  color: #4fc4f6;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+#main .content .titleContentBox.queryCondition .ct .insert .multiDel{
+	width: 72px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo {
+  overflow: hidden;
+  padding-top: 10px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable {
+  table-layout: fixed;
+ /*  min-width: 800px;
+  width: auto !important; */
+  width: 800px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr td,
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr th {
+  word-wrap: break-word;
+  word-break: break-all;
+  font-size: 12px;
+  padding: 10px 0;
+  line-height: 22px;
+  border: 1px solid #e2e2e2;
+  border-collapse: collapse;
+  text-indent: 8px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr td.text-center,
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr th.text-center {
+  text-align: center;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr td .btnModify,
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr th .btnModify,
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr td .btnDelete,
+#main .content .titleContentBox.queryCondition .ct .eInfo .eInfoTable tr th .btnDelete {
+  border: none;
+  background: transparent;
+  color: #55c6f6;
+  margin: 0 4px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv {
+	width: 800px;
+  padding: 15px 0;
+  overflow: hidden;
+  text-align: center;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  font-size: 12px;
+  height: 30px;
+  overflow: hidden;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination span,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination a,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .lf {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  float: left;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination a,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .prev,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .next {
+  border: 1px solid #e2e2e2;
+  text-decoration: none;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination a,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination span.current {
+  width: 28px;
+  height: 28px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination a:hover,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .prev:hover,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .next:hover {
+  border: 1px solid #4fc4f6;
+  color: #4fc4f6;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .pageTotle {
+  margin-left: 10px;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .current.btnPress {
+  color: #a1a1a1;
+  border: 1px solid #e2e2e2;
+  background-color: #fff;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination em {
+  font-style: normal;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination #jumpPageNo {
+  margin: 0 5px;
+  width: 35px;
+  height: 20px;
+  text-align: center;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination #jumpPageAct {
+  width: 58px;
+  height: 28px;
+  text-align: center;
+  margin-left: 15px;
+  border: 1px solid #e2e2e2;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination span.current {
+  border: 1px solid #4fc4f6;
+  color: #4fc4f6;
+  background-color: #4fc4f6;
+  color: #fff;
+}
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .prev.btnPress,
+#main .content .titleContentBox.queryCondition .ct .eInfo .pageDiv .pagination .next.btnPress {
+  width: 78px;
+  height: 28px;
+}
+#main .content .titleContentBox.queryCondition .ct .block {
+  min-height: 36px;
+  height: auto !important;
+  height: 36px;
+  padding-top: 8px;
+}
+#main .content .titleContentBox.queryCondition .ct span {
+  vertical-align: middle;
+  font-size: 12px;
+}
+#main .content .titleContentBox.queryCondition .ct .quarterOrMonth,
+#main .content .titleContentBox.queryCondition .ct .quarterOrMonthBox,
+#main .content .titleContentBox.queryCondition .ct .history,
+#main .content .titleContentBox.queryCondition .ct .job,
+#main .content .titleContentBox.queryCondition .ct .class {
+  margin-right: 35px;
+}
+#main .content .titleContentBox.queryCondition .ct .quarterOrMonth select {
+  width: 140px;
+  height: 30px;
+  height: 22px\9;	
+}
+#main .content .titleContentBox.queryCondition .ct .quarterOrMonthBox select {
+  width: 120px;
+  height: 30px;
+  height: 22px\9;
+}
+#main .content .titleContentBox.queryCondition .ct .history input {
+  width: 145px;
+  height: 24px;
+  line-height: 24px;
+  text-indent: 5px;
+}
+#main .content .titleContentBox.queryCondition .ct .btnQuery {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+  background-color: #cfeff9;
+}
+#main .content .titleContentBox.queryCondition .ct .class select {
+  width: 140px;
+  height: 30px;
+  height: 22px\9;
+}
+#main .content .titleContentBox.queryCondition .ct .job select {
+  width: 140px;
+  height: 30px;
+  height: 22px\9;
+}
+#main .content .titleContentBox.rate {
+  margin-top: 20px;
+}
+#main .content .titleContentBox.rate h2 {
+  position: relative;
+}
+#main .content .titleContentBox.rate h2 .refresh {
+  position: absolute;
+  top: 9px;
+  right: 14px;
+  width: 18px;
+  height: 16px;
+  background: url("../images/icon/010.png") no-repeat center center;
+}
+#main .content .titleContentBox.rate .ct {
+  min-width: 810px;
+  width: auto !important;
+  width: 810px;
+  min-height: 426px;
+  height: auto !important;
+  height: 426px;
+}
+/*main end*/
+/*footer*/
+#footer {
+  min-width: 1166px;
+  width: auto !important;
+  width: 1166px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+/*footer end*/
+/*page style end*/
+/*departmentauthoritymanage*/
+.dam-header {
+  font-family: "Microsoft YaHei";
+  width: 650px;
+  height: 42px;
+  line-height: 42px;
+  background-color: #354052;
+}
+.dam-header h2 {
+  margin-left: 20px;
+  height: 42px;
+  line-height: 42px;
+  padding-left: 18px;
+  color: #fff;
+ /*  background: url("../images/list-item-icon-rect.gif") no-repeat left center; */
+}
+.dam-main {
+  width: 650px;
+  height: auto !important;
+  height: 400px;
+  font-family: "Microsoft YaHei";
+}
+.dam-main .line {
+  margin-top: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+.dam-main .line label {
+  float: left;
+  width: 188px;
+  text-align: right;
+  line-height: 30px;
+  font-size: 14px;
+}
+.dam-main .line span {
+  font-size: 14px;
+  line-height: 30px;
+}
+.dam-main .line .btnFunc {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  background-color: #cfeff9;
+  color: #000;
+  margin-right: 10px;
+}
+.dam-main .line input {
+  vertical-align: middle;
+  height: 24px;
+  line-height: 24px;
+  height: 22px\9;
+  line-height: 22px\9;
+  text-indent: 5px;
+}
+.dam-main .line input.dNameIpt {
+  width: 425px;
+}
+.dam-main .line input.cOneManagerIpt,
+.dam-main .line input.writer {
+  margin-right: 10px;
+  width: 180px;
+}
+.dam-footer {
+  font-family: "Microsoft YaHei";
+  width: 650px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  background-color: #354052;
+}
+.dam-footer .btn {
+  margin: 0 25px;
+  width: 100px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+}
+.dam-footer .btn.save {
+  background-color: #41c0e6;
+}
+.dam-footer .btn.quit {
+  background-color: #5c6c7c;
+}
+/*departmentauthoritymanage end*/
+/*damQuery*/
+.damQuery-main {
+  width: 650px;
+  font-family: "Microsoft YaHei";
+  font-size: 12px;
+}
+.damQuery-main .searchArea {
+  margin-top: 18px;
+  height: 90px;
+  padding: 0 36px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.damQuery-main .searchArea .search .keywordQuery {
+  margin-right: 20px;
+  width: 388px;
+  height: 28px;
+  border-radius: 3px;
+  border: 1px solid #e2e2e2;
+  text-indent: 5px;
+  line-height: 28px;
+}
+.damQuery-main .searchArea .search .btnQuery {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #000;
+  border-radius: 3px;
+  background-color: #cfeff9;
+  border: none;
+}
+.damQuery-main .searchArea .tip {
+  margin-top: 12px;
+  color: #c51115;
+}
+.damQuery-main .result {
+  height: 335px;
+  padding: 10px 36px 0;
+}
+.damQuery-main .result .result-r h2,
+.damQuery-main .result .result-l h2 {
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+}
+.damQuery-main .result .result-r h2 img,
+.damQuery-main .result .result-l h2 img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.damQuery-main .result .result-r .result-box,
+.damQuery-main .result .result-l .result-box {
+  width: 218px;
+  height: 268px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+}
+.damQuery-main .result .result-r {
+  float: right;
+}
+.damQuery-main .result .result-l {
+  float: left;
+}
+.damQuery-main .result .funcQueryBtns {
+  float: left;
+  margin-top: 96px;
+  margin-left: 24px;
+  width: 90px;
+}
+.damQuery-main .result .funcQueryBtns input {
+  width: 88px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #4fc4f6;
+  color: #4fc4f6;
+  text-align: center;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+/*damQuery end*/
+/*tip*/
+.tipBox {
+  position: relative;
+  margin: 30px auto;
+  width: 308px;
+  height: 78px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 3px #ccc;
+}
+.tipBox .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  color: #c8c8c8;
+  font-weight: 700;
+  font-size: 16px;
+}
+.tipBox p {
+  margin-top: 32px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+.tipBox p span {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  background: url("../images/icon/012.png") no-repeat;
+}
+/*tip end*/

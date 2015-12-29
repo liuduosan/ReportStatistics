@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link href="css/jquery.checkboxSelect.css" rel="stylesheet">
+ </head>
+ <body>
+	<select id="select">
+		<option>123</option>
+		<option>456</option>
+		<option>789</option>
+	</select>
+
+
+
+ <script src="js/jquery-1.6.2.min.js"></script>
+ <script src="js/jquery.checkboxSelect.js"></script>
+ <script>
+	$(function(){
+		$("#select").checkboxSelect({
+			showItem:false
+		});
+	})
+ </script>
+ </body>
+</html>

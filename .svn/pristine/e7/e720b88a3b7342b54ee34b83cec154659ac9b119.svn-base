@@ -1,0 +1,202 @@
+/*css reset*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+:focus {
+	outline: 1;
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+    display:block;
+}
+
+nav ul,ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    text-decoration: none;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #000;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+/*css reset end*/
+
+/*index style*/
+h2.header{
+    margin-top: 15px;
+    margin-left: 65px;
+    font-size: 30px;
+    line-height: 48px;
+}
+
+.bg-gray{
+    overflow: hidden;
+    width: 90%;
+    min-width: 1114px;
+    margin: 0 auto;
+    background-color: #ededed;
+}
+
+.menu{
+    float: left;
+    position: relative;    
+    min-width: 180px;
+    width: 15%;
+}
+.menu ul{
+    margin-top: 70px;
+    margin-left: 25px;
+}
+.menu ul li{
+    margin-bottom: 32px;
+    width: 132px;
+    height: 42px;
+    text-align: center;
+    background-color: #00a1e9;
+    border-radius: 5px;
+}
+.menu ul li span{
+    line-height: 42px;
+    font-size: 26px;
+    color: #000;
+}
+
+.nav{
+    width: 83%;
+    float: left;
+}
+.nav>ul{ 
+    margin-left:20px; 
+    min-width: 800px;
+}
+.nav>ul.performance-list{
+    display: none;
+}
+.nav>ul>li{
+    position: relative;
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 0 15px;
+    background-color: #7ecff3;
+     width: 40%;
+    min-width: 320px;
+    min-height:24px;
+}
+.nav>ul>li>span{
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+    line-height: 36px;
+    color: #000;
+    font-weight: 700;
+}
+.nav ul li ul.ztree{
+    display: none;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 100%;
+    border: 1px solid #000;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box;
+    background-color: #7ecff3;
+    z-index: 99;
+}
+
+.content{
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 82%;
+    min-width: 830px;
+    min-height: 640px;
+    background-color: #cbe199;
+}
+
+
+
+
+
+
+
+

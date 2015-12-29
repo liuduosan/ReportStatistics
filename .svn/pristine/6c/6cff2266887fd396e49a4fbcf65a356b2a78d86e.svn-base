@@ -1,0 +1,10 @@
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd">
+<weblogic-web-app>
+	<jsp-descriptor>
+		<jsp-param>
+			<param-name>page-check-seconds</param-name>
+			<param-value>60</param-value>
+		</jsp-param>
+	</jsp-descriptor>
+  <context-root>/</context-root>
+</weblogic-web-app>
